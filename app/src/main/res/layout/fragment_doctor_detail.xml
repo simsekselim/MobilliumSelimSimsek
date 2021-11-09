@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.mobillium.zonezero.presentation.detail.DoctorDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_normal_100"
+        android:background="@color/theme_background_color"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/dimen_normal_150"
+            android:orientation="vertical">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/cimPhoto"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:url="@{vm.selectedDoctor.image.url}" />
+
+            <TextView
+                android:id="@+id/txtDocName"
+                android:text="@{vm.selectedDoctor.full_name}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/theme_dark_text_color"
+                android:layout_marginTop="@dimen/dimen_small_50"
+                android:textSize="@dimen/textsize_normal_100"
+                tools:text="Uzm.Dr.Test"/>
+
+            <TextView
+                android:text="@string/premium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/theme_orange_text_color"
+                android:layout_marginTop="@dimen/dimen_small_50"
+                android:textSize="@dimen/textsize_small_150"
+                android:visibility="@{vm.isPremium ? View.VISIBLE:View.GONE}"
+                tools:text="Premium"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlRouting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg"
+            android:layout_marginTop="@dimen/dimen_normal_150"
+            android:padding="@dimen/dimen_normal_150"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/theme_green"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/textsize_small_150"
+                app:isPremiumAction="@{vm.isPremium}"
+                tools:text="Premium Paket Al"/>
+
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_right_arrow_green"
+                android:layout_width="@dimen/dimen_normal_50"
+                android:layout_height="@dimen/dimen_normal_50"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ZoneZero</string>
+    <string name="message_check_your_internet">Lütfen internet bağlantınızı kontrol ediniz.</string>
+    <string name="opps">Opps!!! Bir sorun var</string>
+    <string name="search_doctor">Klinik ara...</string>
+    <string name="man">Erkek</string>
+    <string name="woman">Kadın</string>
+    <string name="notfound">Kullanıcı Bulunamadı.</string>
+    <string name="premium">Premium</string>
+    <string name="meeting">Randevu Al</string>
+    <string name="buypremium">Premium Paket Al</string>
+    <string name="screenMeeting">Randevu Ekranı</string>
+    <string name="screenPayment">Ödeme Ekranı</string>
+</resources>

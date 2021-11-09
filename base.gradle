@@ -1,0 +1,61 @@
+apply plugin: Plugins.kotlinAndroid
+apply plugin: Plugins.kotlinKapt
+apply plugin: Plugins.hiltPlugin
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        buildConfigField 'String', 'BASE_URL', "\"https://www.mobillium.com/android/\""
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation CoreLibraries.kotlin
+    implementation Libraries.multiDex
+    kapt Libraries.glideKapt
+    compileOnly Libraries.javaxAnnotation
+    implementation Libraries.daggerHilt
+    kapt Libraries.daggerAnnotations
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrain.kotlin') {
+            details.userVersion Version.kotlinVersion
+        } else if (requested.group == 'com.android.support') {
+            details.userVersion Versions.appCompatVersion
+        }
+    }
+}

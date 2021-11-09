@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.mobillium.zonezero.presentation.list.DoctorListViewModel" />
+        <variable
+            name="data"
+            type="com.mobillium.zonezero.domain.model.Gender" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_normal_100"
+        android:background="@color/theme_background_color">
+
+        <EditText
+            android:id="@+id/edtFilter"
+            android:background="@drawable/rounded_bg"
+            android:hint="@string/search_doctor"
+            android:textColorHint="@color/theme_soft_text_color"
+            android:textColor="@color/theme_dark_text_color"
+            android:drawableStart="@drawable/ic_loupe"
+            android:drawablePadding="@dimen/dimen_normal_150"
+            android:padding="@dimen/dimen_normal_50"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textSize="@dimen/textsize_normal_120"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_normal_100"
+            android:padding="@dimen/dimen_small_100"
+            android:background="@drawable/rounded_bg">
+
+            <CheckBox
+                android:id="@+id/cbWoman"
+                android:text="@string/woman"
+                android:textColor="@color/theme_soft_text_color"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/textsize_small_150"
+                android:paddingStart="@dimen/dimen_small_100"
+                android:checked="@{vm.isCheckedWoman}"
+                android:onCheckedChanged="@{(button, bool)-> vm.genderSelected(data.FEMALE, bool)}"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cbMan"
+                android:text="@string/man"
+                android:textColor="@color/theme_soft_text_color"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/textsize_small_150"
+                android:layout_marginStart="@dimen/dimen_large_150"
+                android:paddingStart="@dimen/dimen_small_100"
+                android:checked="@{vm.isCheckedMan}"
+                android:onCheckedChanged="@{(button, bool)-> vm.genderSelected(data.MALE, bool)}"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDoctors"
+            android:background="@drawable/rounded_bg"
+            android:layout_marginTop="@dimen/dimen_normal_150"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{vm.isUserIncluded ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="1" />
+
+        <LinearLayout
+            android:id="@+id/llNotFound"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="@{vm.isUserIncluded ? View.GONE : View.VISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="gone">
+
+
+            <ImageView
+                android:src="@drawable/ic_not_found"
+                android:layout_width="128dp"
+                android:layout_height="128dp"/>
+
+
+            <TextView
+                android:text="@string/notfound"
+                android:layout_marginTop="@dimen/dimen_normal_100"
+                android:textColor="@color/theme_soft_text_color"
+                android:textSize="@dimen/textsize_normal_100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

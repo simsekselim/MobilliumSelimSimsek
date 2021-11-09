@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- normal_200 means 200% of normal, which is 16 x 2 = 32 dp -->
+    <dimen name="dimen_small_50">4dp</dimen>
+    <dimen name="dimen_small_100">8dp</dimen>
+    <dimen name="dimen_normal_50">12dp</dimen>
+    <dimen name="dimen_normal_100">16dp</dimen>
+    <dimen name="dimen_normal_150">24dp</dimen>
+    <dimen name="dimen_large_100">32dp</dimen>
+    <dimen name="dimen_large_150">48dp</dimen>
+    <dimen name="dimen_large_200">64dp</dimen>
+
+    <dimen name="textsize_small_50">4sp</dimen>
+    <dimen name="textsize_small_100">8sp</dimen>
+    <dimen name="textsize_small_150">12sp</dimen>
+    <dimen name="textsize_normal_120">14sp</dimen>
+    <dimen name="textsize_normal_100">16sp</dimen>
+    <dimen name="textsize_normal_150">24sp</dimen>
+    <dimen name="textsize_large_150">36sp</dimen>
+
+    <dimen name="space_xsmall">2dp</dimen>
+    <dimen name="space_small">4dp</dimen>
+    <dimen name="space_medium">8dp</dimen>
+    <dimen name="space_large_medium">10dp</dimen>
+    <dimen name="space_large">16dp</dimen>
+
+    <dimen name="radius">8dp</dimen>
+    <dimen name="size_progress_background">80dp</dimen>
+
+</resources>
